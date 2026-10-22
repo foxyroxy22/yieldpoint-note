@@ -31,8 +31,9 @@ export const COPY = {
         ['Load', 'New challenges'],
         ['Stretch', 'How much I changed'],
         ['Elastic', 'Stretched, but bounced back'],
-        ['Yield point', 'Changed for good'],
-        ['Hardening', 'Grew stronger under new work'],
+        ['Yield point', 'Where I started growing in a new direction'],
+        ['Chain alignment', 'Engineering habits, pointed at design'],
+        ['Hardening', 'Aligned, and carrying more load'],
       ],
     },
 
@@ -45,17 +46,16 @@ export const COPY = {
 
     spread: {
       sec: '03 — Log 02', h: 'Yield point', foot: 'Log 02',
-      plain: 'I learned to code, found I needed design, and decided to become a designer. No going back.',
-      permanent: 'permanent change',
+      plain: 'I learned to code and found I needed design. Nothing broke — I started growing in a new direction.',
       yieldNote: 'Coding, 3 months<br>CSS<br>Decision: web designer',
-      pause: 'Test paused: working holiday',
-      obs: 'Specimen did not return to its original form.',
-      fig: 'The point of no return',
+      drawing: 'Cold drawing: chains aligning<br>Working holiday',
+      obs: 'Specimen did not return to its original form. Its chains began to align with the load.',
+      fig: 'Where the chains started to align',
     },
 
     p6: {
       sec: '04 — Discussion', h: 'Strain hardening', foot: 'Discussion',
-      plain: 'Every new kind of design work made me better — and I never lost interest.',
+      plain: 'Aligned chains carry more load. My engineering habits now work for design.',
       timeline: [['2025.02', 'UI/UX bootcamp'], ['2025.11', 'Hired as a designer'], ['2026.02', 'Graduated, Polymer Engineering']],
       obs: 'Under new loads, the specimen grew stronger.',
       loadsHead: ['Loads tested', 'Interest'],
@@ -65,7 +65,7 @@ export const COPY = {
 
     p7: {
       sec: '05 — Future work', h: 'Test in progress', foot: 'Future work',
-      plain: 'I know what I’m missing, so I’m learning design again from the start.',
+      plain: 'I know which fundamentals I’m missing, and I’m building them in now.',
       obs: 'Missing fundamentals:',
       list: ['Typography', 'Art history', 'Vocabulary', 'Sketching'],
       hyp: 'Hypothesis', hypText: 'A second process, from the beginning, will make the material stronger.',

@@ -10,10 +10,9 @@ export const PH = 594;
 const SEGMENTS = {
   elastic: [[0, 0], [0.16, 0.52]],
   yield: [[0.16, 0.52], [0.18, 0.58], [0.2, 0.6], [0.22, 0.6], [0.24, 0.6], [0.25, 0.56], [0.27, 0.56]],
-  pause: [[0.27, 0.56], [0.35, 0.555], [0.42, 0.575], [0.5, 0.57]],
+  drawing: [[0.27, 0.56], [0.35, 0.555], [0.42, 0.575], [0.5, 0.57]],
   harden: [[0.5, 0.57], [0.62, 0.6], [0.74, 0.78], [0.84, 0.84]],
   ongoing: [[0.84, 0.84], [0.88, 0.87], [0.92, 0.89], [0.95, 0.9]],
-  unload: [[0.27, 0.56], [0.098, 0]],
 };
 
 export function curveSVG({
@@ -25,7 +24,6 @@ export function curveSVG({
   accent = 'var(--blue)',
   sw = 1.6,
   axes = true,
-  unload = false,
   ticks = true,
   labels = ['Load', 'Stretch'],  // 세로축, 가로축 — null이면 생략
   cls = '',
@@ -59,11 +57,8 @@ export function curveSVG({
       <text x="${w - r}" y="${+oy - 6}" text-anchor="end" class="axis-l">${labels[1]} →</text>`;
     }
   }
-  if (unload) {
-    s += `<path d="${path(SEGMENTS.unload)}" fill="none" stroke="${color('unload')}" stroke-width="1" stroke-dasharray="3 3"/>`;
-  }
-  for (const name of ['elastic', 'yield', 'pause', 'harden', 'ongoing']) {
-    const dash = name === 'pause' ? ' stroke-dasharray="5 4"' : name === 'ongoing' ? ' stroke-dasharray="2 4"' : '';
+  for (const name of ['elastic', 'yield', 'drawing', 'harden', 'ongoing']) {
+    const dash = name === 'ongoing' ? ' stroke-dasharray="2 4"' : '';
     s += `<path d="${path(SEGMENTS[name])}" fill="none" stroke="${color(name)}" stroke-width="${width(name)}" stroke-linecap="round"${dash}/>`;
   }
   // 진행 중 화살표 (파단 없음)
@@ -111,7 +106,6 @@ const page = (side, n, inner, extra = '') =>
 const SPREAD_CURVE = { w: 780, h: 296, pad: [10, 10, 24, 28] };
 const CT = 176; // 펼침 그래프 위치 (쉽게 말하면 상자 아래)
 const [yx, yy] = curvePoint(0.22, 0.6, SPREAD_CURVE);
-const [ux, uy] = curvePoint(0.098, 0, SPREAD_CURVE);
 const [, py] = curvePoint(0.35, 0.56, SPREAD_CURVE);
 
 export function buildPages(c) {
@@ -185,19 +179,18 @@ export function buildPages(c) {
     <div class="spread-title">${title(sp.sec, sp.h, '2022.12', sp.plain)}</div>
 
     <div class="spread-curve" style="left:30px;top:${CT}px">
-      ${curveSVG({ ...SPREAD_CURVE, hl: ['yield', 'pause', 'unload'], faint: 'rgba(20,20,20,.22)', unload: true, sw: 1.8, labels: c.axis })}
+      ${curveSVG({ ...SPREAD_CURVE, hl: ['yield', 'drawing'], faint: 'rgba(20,20,20,.22)', sw: 1.8, labels: c.axis })}
       <svg class="spread-ghost" viewBox="0 0 780 296" width="780" height="296" aria-hidden="true">
         <circle cx="${yx}" cy="${yy}" r="4.5" fill="var(--paper)" stroke="var(--blue)" stroke-width="1.6"/>
         <path d="M${yx} ${yy - 8} V${yy - 70}" stroke="var(--blue)" stroke-width=".8"/>
-        <text x="${ux + 4}" y="${uy + 16}" class="dim blue">${sp.permanent}</text>
       </svg>
     </div>
 
     <div class="callout" style="left:${30 + yx + 8}px;top:${CT + yy - 82}px">
       <b>2022.12</b><br>${sp.yieldNote}
     </div>
-    <div class="callout callout--muted" style="left:262px;top:${CT + py + 26}px">
-      <b>2023.02–2024.02</b><br>${sp.pause}
+    <div class="callout" style="left:262px;top:${CT + py + 26}px">
+      <b>2023.02–2024.02</b><br>${sp.drawing}
     </div>
 
     <div class="spread-obs">${row(c.obs, sp.obs)}</div>

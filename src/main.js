@@ -16,9 +16,9 @@ const STATES = [
   { hl: [], strain: 0, stress: 0 },
   { hl: [], strain: 0, stress: 0 },
   { hl: ['elastic'], strain: 0.012, stress: 18.6 },
-  { hl: ['yield', 'pause'], strain: 0.046, stress: 24.1 },
+  { hl: ['yield', 'drawing'], strain: 0.046, stress: 24.1 },
   { hl: ['harden', 'ongoing'], strain: 0.318, stress: 31.8 },
-  { hl: ['elastic', 'yield', 'pause', 'harden', 'ongoing'], strain: 0.402, stress: 34.5 },
+  { hl: ['elastic', 'yield', 'drawing', 'harden', 'ongoing'], strain: 0.402, stress: 34.5 },
 ];
 
 const $ = (id) => document.getElementById(id);
