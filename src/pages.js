@@ -108,6 +108,17 @@ const CT = 176; // 펼침 그래프 위치 (쉽게 말하면 상자 아래)
 const [yx, yy] = curvePoint(0.22, 0.6, SPREAD_CURVE);
 const [, py] = curvePoint(0.35, 0.56, SPREAD_CURVE);
 
+// 곡선 구간 위의 한 점 (t = 0..1, 3차 베지어)
+const along = (name, t) => {
+  const [p0, p1, p2, p3] = SEGMENTS[name];
+  const m = 1 - t;
+  return [0, 1].map((i) => m * m * m * p0[i] + 3 * m * m * t * p1[i] + 3 * m * t * t * p2[i] + t * t * t * p3[i]);
+};
+// 변형 경화 구간 위 이정표: 부트캠프, 입사, 졸업
+const [bx, by] = curvePoint(...along('harden', 0.25), SPREAD_CURVE);
+const [hx, hy] = curvePoint(...along('harden', 0.7), SPREAD_CURVE);
+const [gx, gy] = curvePoint(...along('harden', 1), SPREAD_CURVE);
+
 export function buildPages(c) {
   const head = (n) =>
     `<header class="ph"><span>Yield Point</span><span>p.${String(n).padStart(2, '0')} / 08</span></header>`;
@@ -179,10 +190,16 @@ export function buildPages(c) {
     <div class="spread-title">${title(sp.sec, sp.h, '2022.12', sp.plain)}</div>
 
     <div class="spread-curve" style="left:30px;top:${CT}px">
-      ${curveSVG({ ...SPREAD_CURVE, hl: ['yield', 'drawing'], faint: 'rgba(20,20,20,.22)', sw: 1.8, labels: c.axis })}
+      ${curveSVG({ ...SPREAD_CURVE, hl: ['yield', 'drawing'], sw: 1.8, labels: c.axis })}
       <svg class="spread-ghost" viewBox="0 0 780 296" width="780" height="296" aria-hidden="true">
         <circle cx="${yx}" cy="${yy}" r="4.5" fill="var(--paper)" stroke="var(--blue)" stroke-width="1.6"/>
         <path d="M${yx} ${yy - 8} V${yy - 70}" stroke="var(--blue)" stroke-width=".8"/>
+        <g fill="var(--paper)" stroke="#141414" stroke-width="1.4">
+          <circle cx="${bx}" cy="${by}" r="3.5"/><circle cx="${hx}" cy="${hy}" r="3.5"/><circle cx="${gx}" cy="${gy}" r="3.5"/>
+        </g>
+        <g stroke="#141414" stroke-width=".8">
+          <path d="M${bx} ${by - 7} V${by - 56}"/><path d="M${hx} ${hy - 7} V${hy - 56}"/><path d="M${gx} ${gy + 7} V${gy + 22}"/>
+        </g>
       </svg>
     </div>
 
@@ -191,6 +208,15 @@ export function buildPages(c) {
     </div>
     <div class="callout" style="left:262px;top:${CT + py + 26}px">
       <b>2023.02–2024.02</b><br>${sp.drawing}
+    </div>
+    <div class="callout callout--ink" style="left:${30 + bx + 6}px;top:${CT + by - 92}px">
+      <b>2025.02–08</b><br>${sp.bootcamp}
+    </div>
+    <div class="callout callout--ink" style="left:${30 + hx + 6}px;top:${CT + hy - 92}px">
+      <b>2025.11</b><br>${sp.hired}
+    </div>
+    <div class="callout callout--ink" style="left:${30 + gx + 6}px;top:${CT + gy + 14}px">
+      <b>2026.02</b><br>${sp.graduated}
     </div>
 
     <div class="spread-obs">${row(c.obs, sp.obs)}</div>

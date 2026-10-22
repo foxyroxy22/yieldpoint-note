@@ -368,6 +368,8 @@ figcaption b, .spread-cap b { color: var(--blue); }
   border-left: 1px solid var(--blue);
 }
 .callout b { color: var(--blue); }
+.callout--ink { border-left-color: var(--ink); }
+.callout--ink b { color: var(--ink); }
 .spread-obs { position: absolute; left: 30px; right: 450px; top: 496px; }
 .spread-obs .obs { margin: 0; }
 .spread-cap { position: absolute; left: 480px; right: 40px; top: 478px; margin: 0; }
