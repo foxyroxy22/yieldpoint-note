@@ -315,15 +315,6 @@ scene.addEventListener('pointercancel', endDrag);
 
 addEventListener('resize', fit);
 
-/* ---------- clock ---------- */
-
-const t0 = Date.now();
-setInterval(() => {
-  const s = Math.floor((Date.now() - t0) / 1000);
-  const pad = (n) => String(n).padStart(2, '0');
-  $('clock').textContent = `${pad(Math.floor(s / 3600))}:${pad(Math.floor(s / 60) % 60)}:${pad(s % 60)}`;
-}, 1000);
-
 /* ---------- intro ---------- */
 
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));

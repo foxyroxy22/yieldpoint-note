@@ -32,26 +32,24 @@ body {
 
 /* ---------- lab bench ---------- */
 
-/* 화면 뒤 = 실험실 바닥 */
+/* 화면 뒤 = 바닥 (책상 밖) */
 .bench {
   position: fixed; inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 30%, #121417, #050607 80%);
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, #1d1f22, #08090a 80%);
 }
 
-/* 책상 상판 (3D 평면 안) — 검정 에폭시 레진 */
+/* 책상 상판 (3D 평면 안) — 짙은 회색 */
 .benchtop {
   position: absolute;
   left: -2000px; top: -1700px;
   width: 4000px; height: 2140px;          /* 앞 모서리 = y 440 */
   transform: translateZ(-2px);
   background:
-    radial-gradient(ellipse 1300px 820px at 50% 1700px, rgba(205, 220, 240, 0.13), transparent 70%),
-    radial-gradient(ellipse 1500px 70px at 50% 1250px, rgba(225, 235, 255, 0.07), transparent 70%),
-    radial-gradient(ellipse 1500px 70px at 50% 1120px, rgba(225, 235, 255, 0.05), transparent 70%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .02' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .6 0 0 0 0 .65 0 0 0 0 .7 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    linear-gradient(180deg, #0f1113 0%, #191c1f 60%, #1d2024 100%);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.14);  /* 모서리 하이라이트 */
+    radial-gradient(ellipse 1300px 820px at 50% 1700px, rgba(235, 240, 248, 0.14), transparent 70%),
+    linear-gradient(180deg, rgba(10, 11, 13, 0.45) 0%, rgba(10, 11, 13, 0) 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #34373b 0%, #3c3f44 60%, #414449 100%);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.16);   /* 모서리 하이라이트 */
 }
 /* 상판 앞면 두께 */
 .benchtop-edge {
@@ -60,12 +58,12 @@ body {
   width: 4000px; height: 70px;
   transform-origin: 50% 0;
   transform: translateZ(-2px) rotateX(-90deg);
-  background: linear-gradient(180deg, #2b2f34 0%, #15181b 30%, #0a0b0d 100%);
+  background: linear-gradient(180deg, #4a4d52 0%, #2a2c30 35%, #0f1012 100%);
 }
 
 .vignette {
   position: fixed; inset: 0; pointer-events: none; z-index: 4;
-  background: radial-gradient(ellipse 75% 70% at 50% 45%, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+  background: radial-gradient(ellipse 75% 70% at 50% 45%, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
 }
 
 .lights {
@@ -435,7 +433,8 @@ body.is-intro .hud, body.is-intro .controls, body.is-intro .hint { opacity: 0; t
 .hud--tl { left: 28px; top: 22px; display: flex; align-items: center; gap: 14px; }
 
 .hud-title { font-size: 13px; font-weight: 600; letter-spacing: .22em; color: #eef2f6; }
-.hud-sub { margin-top: 4px; font-size: 10px; letter-spacing: .08em; color: var(--hud-dim); }
+.hud-sub { margin-top: 4px; font-size: 10px; letter-spacing: .08em; color: rgba(245, 236, 225, .82); }
+.hud--tl { text-shadow: 0 1px 6px rgba(0, 0, 0, .6); }
 
 .hud--tr {
   right: 28px; top: 22px; width: 196px;
@@ -453,8 +452,6 @@ body.is-intro .hud, body.is-intro .controls, body.is-intro .hint { opacity: 0; t
   padding-bottom: 6px; margin-bottom: 4px;
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
-.rec { display: inline-flex; align-items: center; gap: 5px; color: #ff6b5a; }
-.rec i { width: 6px; height: 6px; border-radius: 50%; background: #ff6b5a; animation: blink 1.6s ease-in-out infinite; }
 .readout-row { display: flex; align-items: baseline; gap: 8px; padding: 2px 0; }
 .readout-row span { width: 52px; color: var(--hud-dim); }
 .readout-row b { font-weight: 500; color: #e8edf2; font-variant-numeric: tabular-nums; }
