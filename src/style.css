@@ -380,7 +380,7 @@ figcaption b, .spread-cap b { color: var(--blue); }
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--paper); border: 1.2px solid var(--blue);
 }
-.timeline span { display: inline-block; width: 58px; color: var(--blue); font-weight: 500; }
+.timeline span { display: inline-block; width: 72px; color: var(--blue); font-weight: 500; }
 .data--loads { margin-top: 14px; }
 .data--loads th { padding-bottom: 4px; }
 .data--loads th:last-child { text-align: left; }

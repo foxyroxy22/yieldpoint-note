@@ -21,8 +21,8 @@ export const COPY = {
       rows: [
         ['Origin', 'B.Eng. Polymer Engineering, 2020–2026'],
         ['Initial purpose', 'Cosmetic research (color, mixing)'],
-        ['Processing', 'UI/UX bootcamp, 2025.02'],
-        ['Current application', 'Designer, since 2025.11'],
+        ['Processing', 'UI/UX bootcamp, 2025.02–2025.08 (6 months)'],
+        ['Current application', 'Web designer at TK C&amp;CO, since 2025.11'],
         ['Test method', 'Tensile test — pull, and watch what changes'],
       ],
       keyHead: 'How to read this report',
@@ -56,7 +56,7 @@ export const COPY = {
     p6: {
       sec: '04 — Discussion', h: 'Strain hardening', foot: 'Discussion',
       plain: 'Aligned chains carry more load. My engineering habits now work for design.',
-      timeline: [['2025.02', 'UI/UX bootcamp'], ['2025.11', 'Hired as a designer'], ['2026.02', 'Graduated, Polymer Engineering']],
+      timeline: [['2025.02–08', 'UI/UX bootcamp, 6 months'], ['2025.11', 'Hired as a web designer, TK C&amp;CO'], ['2026.02', 'Graduated, Polymer Engineering']],
       obs: 'Under new loads, the specimen grew stronger.',
       loadsHead: ['Loads tested', 'Interest'],
       loads: ['Packaging', 'Web', 'Exhibition space', 'Content marketing'],
