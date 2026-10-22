@@ -119,6 +119,12 @@ const [bx, by] = curvePoint(...along('harden', 0.25), SPREAD_CURVE);
 const [hx, hy] = curvePoint(...along('harden', 0.7), SPREAD_CURVE);
 const [gx, gy] = curvePoint(...along('harden', 1), SPREAD_CURVE);
 
+// p.2 입문 그래프: 구간 번호 ①–④ 위치 (곡선에서 살짝 위)
+const PRIMER_CURVE = { w: 360, h: 84, pad: [6, 6, 14, 20] };
+const PRIMER_MARKS = [[0.08, 0.26], [0.22, 0.6], [0.38, 0.565], along('harden', 0.5)]
+  .map(([u, v]) => curvePoint(u, v, PRIMER_CURVE))
+  .map(([x, y]) => [x - 9, y - 11]);
+
 export function buildPages(c) {
   const head = (n) =>
     `<header class="ph"><span>Yield Point</span><span>p.${String(n).padStart(2, '0')} / 08</span></header>`;
@@ -160,9 +166,22 @@ export function buildPages(c) {
     ${head(2)}
     ${title(m.sec, m.h)}
     ${table(m.rows)}
-    <div class="key">
-      <div class="key-head"><b>Fig. 1</b> — ${m.keyHead}</div>
-      <dl>${m.key.map(([a, b]) => `<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl>
+    <div class="primer">
+      <div class="primer-head"><b>Fig. 1</b> — ${m.primer.head}</div>
+      <p class="primer-intro">${m.primer.intro}</p>
+      <div class="primer-curve">
+        ${curveSVG({ ...PRIMER_CURVE, labels: c.axis, ticks: false })}
+        <svg viewBox="0 0 ${PRIMER_CURVE.w} ${PRIMER_CURVE.h}" width="${PRIMER_CURVE.w}" height="${PRIMER_CURVE.h}" aria-hidden="true">
+          ${PRIMER_MARKS.map(([x, y], i) => `
+            <circle cx="${x}" cy="${y}" r="7" fill="var(--blue)"/>
+            <text x="${x}" y="${y + 3}" text-anchor="middle" class="mark-n">${i + 1}</text>`).join('')}
+        </svg>
+      </div>
+      <table class="primer-table">
+        <tr><th></th><th></th><th>${m.primer.cols[0]}</th><th>${m.primer.cols[1]}</th></tr>
+        ${m.primer.regions.map(([name, lab, me], i) =>
+          `<tr><td><i>${i + 1}</i></td><td>${name}</td><td>${lab}</td><td>${me}</td></tr>`).join('')}
+      </table>
     </div>
     ${foot(m.foot)}
   `);

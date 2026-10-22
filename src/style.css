@@ -283,17 +283,32 @@ figcaption b, .spread-cap b { color: var(--blue); }
 }
 .cover-plain { margin-top: 10px; width: 170px; font-size: 8.5px; line-height: 1.5; color: #555; }
 
-/* 읽는 법 */
-.key { margin-top: 18px; border: 1px solid var(--ink); }
-.key-head {
+/* 인장 시험 입문 (p.2) */
+.primer { margin-top: 14px; border: 1px solid var(--ink); }
+.primer-head {
   padding: 5px 8px; border-bottom: 1px solid var(--ink);
   font-size: 7.5px; letter-spacing: .06em; color: #333;
 }
-.key-head b { color: var(--blue); }
-.key dl { display: grid; grid-template-columns: 96px 1fr; }
-.key dt, .key dd { padding: 4px 8px; border-bottom: 1px solid rgba(20,20,20,.12); font-size: 9px; }
-.key dt { font-size: 7px; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); padding-top: 5.5px; }
-.key dt:nth-last-of-type(1), .key dd:last-child { border-bottom: 0; }
+.primer-head b { color: var(--blue); }
+.primer-intro { padding: 6px 8px 0; font-size: 8.5px; line-height: 1.5; }
+.primer-curve { position: relative; height: 84px; margin: 4px 0 2px; }
+.primer-curve svg { position: absolute; left: 0; top: 0; overflow: visible; }
+.mark-n { font-family: var(--mono); font-size: 8px; font-weight: 600; fill: #fff; }
+.primer-table { width: 100%; border-collapse: collapse; font-size: 8px; line-height: 1.35; }
+.primer-table th {
+  padding: 3px 4px; text-align: left; font-weight: 400;
+  font-size: 6.5px; letter-spacing: .12em; text-transform: uppercase; color: #666;
+  border-top: 1px solid rgba(20,20,20,.25);
+}
+.primer-table td { padding: 3.5px 4px; vertical-align: top; border-top: 1px solid rgba(20,20,20,.12); }
+.primer-table td:nth-child(1) { width: 18px; padding-left: 8px; }
+.primer-table td:nth-child(2) { width: 74px; font-size: 7px; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); padding-top: 4.5px; }
+.primer-table td:nth-child(3) { width: 112px; color: #444; }
+.primer-table i {
+  display: inline-block; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--blue); color: #fff; font-style: normal;
+  font-size: 7px; font-weight: 600; line-height: 12px; text-align: center;
+}
 
 .obs {
   display: grid; grid-template-columns: 72px 1fr; gap: 0 8px;

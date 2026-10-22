@@ -21,20 +21,21 @@ export const COPY = {
       rows: [
         ['Origin', 'B.Eng. Polymer Engineering, 2020–2026'],
         ['Initial purpose', 'Cosmetic research (color, mixing)'],
-        ['Processing', 'UI/UX bootcamp, 2025.02–2025.08 (6 months)'],
-        ['Current application', 'Web designer at TK C&amp;CO, since 2025.11'],
-        ['Test method', 'Tensile test — pull, and watch what changes'],
+        ['Processing', 'UI/UX bootcamp, 2025.02–08'],
+        ['Current application', 'Web designer, TK C&amp;CO, 2025.11–'],
+        ['Test method', 'Tensile test (see Fig. 1)'],
       ],
-      keyHead: 'How to read this report',
-      key: [
-        ['Specimen', 'Me'],
-        ['Load', 'New challenges'],
-        ['Stretch', 'How much I changed'],
-        ['Elastic', 'Stretched, but bounced back'],
-        ['Yield point', 'Where I started growing in a new direction'],
-        ['Chain alignment', 'Engineering habits, pointed at design'],
-        ['Hardening', 'Aligned, and carrying more load'],
-      ],
+      primer: {
+        head: 'How a tensile test works',
+        intro: 'A tensile test pulls a sample slowly and records how hard it’s pulled (load) and how far it stretches. In this report, the sample is me — and the load is new challenges.',
+        cols: ['In the lab', 'In this report'],
+        regions: [
+          ['Elastic', 'Stretches, then springs back', 'Studying engineering'],
+          ['Yield point', 'Starts to change shape for good', 'Deciding on design'],
+          ['Cold drawing', 'Chains line up with the pull', 'Engineering habits, pointed at design'],
+          ['Hardening', 'Gets stronger as it’s pulled', 'Growing as a designer'],
+        ],
+      },
     },
 
     p3: {
