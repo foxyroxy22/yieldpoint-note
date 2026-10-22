@@ -47,8 +47,8 @@ export const COPY = {
 
     spread: {
       sec: '03 — Log 02', h: 'Yield point', foot: 'Log 02',
-      plain: 'Out of nowhere, I studied coding for three months. Not a reason to switch yet — just a small pull.',
-      yieldNote: 'Coding, 3 months<br>CSS<br>A small pull: web design',
+      plain: 'I wanted to find what I was good at, so I joined a winter coding course for non-majors. Not a reason to switch yet — just a small pull.',
+      yieldNote: 'Coding course for non-majors<br>Winter break, 3 months<br>CSS<br>A small pull: web design',
       drawing: 'Cold drawing: chains aligning<br>Working holiday, Australia',
       bootcamp: 'UI/UX bootcamp<br>6 months',
       hired: 'Hired: web designer<br>TK C&amp;CO',
@@ -59,15 +59,15 @@ export const COPY = {
 
     p6: {
       sec: '04 — Log 03', h: 'Cold drawing', foot: 'Log 03',
-      plain: 'A year in Australia showed me how much there is to see and experience. I came back unwilling to waste time — and ready to follow what interested me, however small.',
+      plain: 'A year in Australia showed me how much of the world there is to see. I came back ambitious — wanting to find my passion, and to see more of the world through it.',
       rows: [
         ['Location', 'Australia, working holiday'],
         ['Duration', '12 months'],
-        ['Finding', 'Time is too precious to waste'],
+        ['Finding', 'So much of the world left to see'],
       ],
       fig: 'Under a steady pull, the chains line up',
       obs: 'Load held steady. Chains slowly aligned with the direction of the pull.',
-      decision: 'Decision', decisionText: 'Follow the small interest. Apply the next load: design.',
+      decision: 'Decision', decisionText: 'Be ambitious. Find a passion, and follow it further.',
     },
 
     p7: {
