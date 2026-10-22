@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Yield Point</title>
+  <meta name="description" content="Yield Point — a tensile test report on one career. A zine by Ajin Kim.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body class="is-intro">
+  <div class="bench" aria-hidden="true"></div>
+
+  <div class="scene" id="scene" aria-hidden="true">
+    <div class="table" id="table">
+      <div class="benchtop" aria-hidden="true"></div>
+      <div class="benchtop-edge" aria-hidden="true"></div>
+      <div class="props" id="props"></div>
+      <div class="drop is-pre" id="drop">
+        <div class="book" id="book">
+          <div class="shadow shadow--soft" id="shadowSoft"></div>
+          <div class="shadow shadow--contact" id="shadowContact"></div>
+          <div class="spine" id="spine"></div>
+          <div class="leaves" id="leaves"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="lights" aria-hidden="true"></div>
+
+  <!-- HUD -->
+  <header class="hud hud--tl">
+    <div class="hud-text">
+      <div class="hud-title">YIELD POINT</div>
+      <div class="hud-sub" id="hudSub">Tensile lab · Bench 03 · Specimen No. 01</div>
+    </div>
+  </header>
+
+  <div class="hud hud--tr" aria-hidden="true">
+    <div class="readout-head"><span class="rec"><i></i>REC</span><span id="clock">00:00:00</span></div>
+    <div class="readout-row"><span id="lStretch">Stretch</span><b id="rStrain">0.0</b><em>%</em></div>
+    <div class="readout-row"><span id="lLoad">Load</span><b id="rStress">0.0</b><em>kN</em></div>
+    <div class="readout-row readout-row--stage"><span id="lStage">Stage</span><b id="rStage">Pre-test</b></div>
+  </div>
+
+  <nav class="controls" aria-label="Page controls">
+    <button class="btn btn--ghost" id="prev" aria-label="Previous page">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12 4 6 10l6 6"/></svg>
+    </button>
+    <div class="progress">
+      <div class="progress-curve" id="progressCurve" aria-hidden="true"></div>
+      <div class="progress-text">
+        <b id="pageLabel">Jacket</b>
+        <span id="pageSub">Specimen sleeve</span>
+      </div>
+    </div>
+    <button class="btn btn--turn" id="next">
+      <span id="nextLabel">Turn page</span>
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 4l6 6-6 6"/></svg>
+    </button>
+  </nav>
+  <p class="hint" id="hint" aria-hidden="true">← → keys · click or drag the page</p>
+  <p class="sr-only" aria-live="polite" id="live"></p>
+
+  <!-- 스크린리더·검색용 페이지 텍스트 -->
+  <main class="sr-only" id="srPages">
+    <h1>Yield Point — a tensile test report on one career</h1>
+  </main>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
