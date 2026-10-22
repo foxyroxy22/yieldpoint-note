@@ -65,9 +65,9 @@ export const COPY = {
 
     p7: {
       sec: '05 — Future work', h: 'Test in progress', foot: 'Future work',
-      plain: 'I know which fundamentals I’m missing, and I’m building them in now.',
-      obs: 'Missing fundamentals:',
-      list: ['Typography', 'Art history', 'Vocabulary', 'Sketching'],
+      plain: 'Here’s what I want to study next — the loads I’m choosing to take on.',
+      obs: 'Next loads to apply — what I want to study:',
+      list: ['Typography', 'Editorial design', 'Art history', '3D design', 'Sketching'],
       hyp: 'Hypothesis', hypText: 'A second process, from the beginning, will make the material stronger.',
       note: 'Note', noteText: 'The first test did not fail. It measured what I am made of.',
       running: 'Test in progress. Fracture not observed.',
