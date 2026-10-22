@@ -95,6 +95,27 @@ const dogboneVertical = `
   <text x="146" y="168" class="dim">G</text>
 </svg>`;
 
+export const TOTAL = 10; // 총 쪽수
+
+// p.7 흥미 막대그래프 — 부트캠프 기간 월별로 커지는 흥미
+const INTEREST = [1, 1.8, 2.9, 4.2, 5.9, 8];
+function interestChart(bc, axis) {
+  const w = 360, h = 150, l = 22, b = 18, t = 22;
+  const bw = 34, gap = (w - l - 10 - bw * INTEREST.length) / (INTEREST.length - 1);
+  const k = (h - t - b) / Math.max(...INTEREST);
+  const bars = INTEREST.map((v, i) => {
+    const x = l + i * (bw + gap), bh = v * k, y = h - b - bh, last = i === INTEREST.length - 1;
+    return `<rect x="${x}" y="${y}" width="${bw}" height="${bh}" fill="${last ? 'var(--blue)' : '#141414'}" opacity="${last ? 1 : 0.18 + i * 0.1}"/>
+      <text x="${x + bw / 2}" y="${h - 5}" text-anchor="middle" class="dim">${bc.months[i]}</text>` +
+      (last ? `<text x="${x + bw / 2}" y="${y - 6}" text-anchor="middle" class="dim blue">${bc.peak} ↑</text>` : '');
+  }).join('');
+  return `<svg class="curve" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true">
+    <path d="M${l} ${t - 14} V${h - b} H${w}" fill="none" stroke="#141414"/>
+    <text x="${l + 5}" y="${t - 8}" class="axis-l">Interest ↑</text>
+    ${bars}
+  </svg>`;
+}
+
 /* ---------- page parts ----------
    모든 페이지 공통 구조:
    머리말(제목 · 쪽수) → 섹션 번호 · 제목 · 기간 → 쉽게 말하면 → 본문(표/그림 + 관찰) → 꼬리말
@@ -127,7 +148,7 @@ const PRIMER_MARKS = [[0.08, 0.26], [0.22, 0.6], [0.38, 0.565], along('harden', 
 
 export function buildPages(c) {
   const head = (n) =>
-    `<header class="ph"><span>Yield Point</span><span>p.${String(n).padStart(2, '0')} / 08</span></header>`;
+    `<header class="ph"><span>Yield Point</span><span>p.${String(n).padStart(2, '0')} / ${TOTAL}</span></header>`;
   const foot = (section) => `<footer class="pf"><span>${c.spec}</span><span>${section}</span></footer>`;
   const title = (sec, h, meta = '', plain = '') =>
     `<div class="sec">${sec}</div><h2>${h}</h2>${meta ? `<div class="meta">${meta}</div>` : ''}` +
@@ -203,8 +224,8 @@ export function buildPages(c) {
   const sp = c.spread;
   const spread = `
   <div class="spread">
-    <header class="ph ph--abs" style="left:30px;right:450px"><span>Yield Point</span><span>p.04 / 08</span></header>
-    <header class="ph ph--abs" style="left:450px;right:30px"><span>Yield Point</span><span>p.05 / 08</span></header>
+    <header class="ph ph--abs" style="left:30px;right:450px"><span>Yield Point</span><span>p.04 / ${TOTAL}</span></header>
+    <header class="ph ph--abs" style="left:450px;right:30px"><span>Yield Point</span><span>p.05 / ${TOTAL}</span></header>
 
     <div class="spread-title">${title(sp.sec, sp.h, '2022.12', sp.plain)}</div>
 
@@ -247,10 +268,39 @@ export function buildPages(c) {
   const p4 = page('left', 4, `<div class="spread-wrap" style="left:0">${spread}</div>`, 'page--spread');
   const p5 = page('right', 5, `<div class="spread-wrap" style="left:-${PW}px">${spread}</div>`, 'page--spread');
 
-  /* 6 · discussion */
-  const d = c.p6;
+  /* 6 · log 03 — Australia */
+  const au = c.p6;
   const p6 = page('left', 6, `
     ${head(6)}
+    ${title(au.sec, au.h, '2023.02 – 2024.02', au.plain)}
+    ${table(au.rows, 'data data--compact')}
+    <figure class="fig fig--curve">
+      ${curveSVG({ w: 360, h: 150, hl: ['drawing'], faint: 'rgba(20,20,20,.16)', labels: c.axis })}
+      <figcaption><b>Fig. 4</b> — ${au.fig}</figcaption>
+    </figure>
+    ${row(c.obs, au.obs)}
+    ${row(au.decision, au.decisionText)}
+    ${foot(au.foot)}
+  `);
+
+  /* 7 · log 04 — bootcamp */
+  const bc = c.p7;
+  const p7 = page('right', 7, `
+    ${head(7)}
+    ${title(bc.sec, bc.h, '2025.02 – 2025.08', bc.plain)}
+    <figure class="fig">
+      ${interestChart(bc, c.axis)}
+      <figcaption><b>Fig. 5</b> — ${bc.fig}</figcaption>
+    </figure>
+    ${row(c.obs, bc.obs)}
+    ${row(bc.result, bc.resultText)}
+    ${foot(bc.foot)}
+  `);
+
+  /* 8 · discussion */
+  const d = c.p8;
+  const p8 = page('left', 8, `
+    ${head(8)}
     ${title(d.sec, d.h, '2025.02 –', d.plain)}
     <ol class="timeline">${d.timeline.map(([t, x]) => `<li><span>${t}</span>${x}</li>`).join('')}</ol>
     ${row(c.obs, d.obs)}
@@ -262,10 +312,10 @@ export function buildPages(c) {
     ${foot(d.foot)}
   `);
 
-  /* 7 · future work */
-  const f = c.p7;
-  const p7 = page('right', 7, `
-    ${head(7)}
+  /* 9 · future work */
+  const f = c.p9;
+  const p9 = page('right', 9, `
+    ${head(9)}
     ${title(f.sec, f.h, '', f.plain)}
     ${row(c.obs, f.obs)}
     <ul class="checklist">${f.list.map((x) => `<li>${x}</li>`).join('')}</ul>
@@ -275,14 +325,14 @@ export function buildPages(c) {
     ${foot(f.foot)}
   `);
 
-  /* 8 · colophon */
-  const k = c.p8;
-  const p8 = page('left', 8, `
-    ${head(8)}
+  /* 10 · colophon */
+  const k = c.p10;
+  const p10 = page('left', 10, `
+    ${head(10)}
     ${title(k.sec, k.h)}
     ${table(k.rows)}
     ${foot(k.foot)}
   `, 'page--back');
 
-  return { jacket, jacketBack, 1: p1, 2: p2, 3: p3, 4: p4, 5: p5, 6: p6, 7: p7, 8: p8 };
+  return { jacket, jacketBack, 1: p1, 2: p2, 3: p3, 4: p4, 5: p5, 6: p6, 7: p7, 8: p8, 9: p9, 10: p10 };
 }

@@ -30,36 +30,60 @@ export const COPY = {
         intro: 'A tensile test pulls a sample slowly and records how hard it’s pulled (load) and how far it stretches. In this report, the sample is me — and the load is new challenges.',
         cols: ['In the lab', 'In this report'],
         regions: [
-          ['Elastic', 'Stretches, then springs back', 'Studying engineering'],
-          ['Yield point', 'Starts to change shape for good', 'Deciding on design'],
-          ['Cold drawing', 'Chains line up with the pull', 'Engineering habits, pointed at design'],
-          ['Hardening', 'Gets stronger as it’s pulled', 'Growing as a designer'],
+          ['Elastic', 'Stretches, then springs back', 'Studying chemistry fundamentals'],
+          ['Yield point', 'Starts to change shape for good', 'A small pull toward web design'],
+          ['Cold drawing', 'Chains line up with the pull', 'Choosing to follow that interest'],
+          ['Hardening', 'Gets stronger as it’s pulled', 'Interest growing into passion'],
         ],
       },
     },
 
     p3: {
       sec: '02 — Log 01', h: 'Elastic region', foot: 'Log 01',
-      plain: 'I studied engineering. It stretched me, but I stayed the same.',
+      plain: 'Years of chemistry fundamentals, waiting for the part where I could experiment on my own. I stretched — but nothing in me changed.',
       fig: 'Pulled, then back to the original shape',
       obs: 'Load increased. Specimen stretched, but held its original form.',
     },
 
     spread: {
       sec: '03 — Log 02', h: 'Yield point', foot: 'Log 02',
-      plain: 'I learned to code and found I needed design. Nothing broke — I started growing in a new direction.',
-      yieldNote: 'Coding, 3 months<br>CSS<br>Decision: web designer',
-      drawing: 'Cold drawing: chains aligning<br>Working holiday',
+      plain: 'Out of nowhere, I studied coding for three months. Not a reason to switch yet — just a small pull.',
+      yieldNote: 'Coding, 3 months<br>CSS<br>A small pull: web design',
+      drawing: 'Cold drawing: chains aligning<br>Working holiday, Australia',
       bootcamp: 'UI/UX bootcamp<br>6 months',
       hired: 'Hired: web designer<br>TK C&amp;CO',
       graduated: 'Graduated<br>Polymer Engineering',
-      obs: 'Specimen did not return to its original form. Its chains began to align with the load.',
+      obs: 'Specimen did not return to its original form. A new direction had appeared.',
       fig: 'Where the chains started to align',
     },
 
     p6: {
-      sec: '04 — Discussion', h: 'Strain hardening', foot: 'Discussion',
-      plain: 'Aligned chains carry more load. My engineering habits now work for design.',
+      sec: '04 — Log 03', h: 'Cold drawing', foot: 'Log 03',
+      plain: 'A year in Australia showed me how much there is to see and experience. I came back unwilling to waste time — and ready to follow what interested me, however small.',
+      rows: [
+        ['Location', 'Australia, working holiday'],
+        ['Duration', '12 months'],
+        ['Finding', 'Time is too precious to waste'],
+      ],
+      fig: 'Under a steady pull, the chains line up',
+      obs: 'Load held steady. Chains slowly aligned with the direction of the pull.',
+      decision: 'Decision', decisionText: 'Follow the small interest. Apply the next load: design.',
+    },
+
+    p7: {
+      sec: '05 — Log 04', h: 'Interest, increasing', foot: 'Log 04',
+      plain: 'During the UI/UX bootcamp, my interest kept getting bigger and bigger — until I knew I’d finally found my passion.',
+      chartHead: 'Interest, by month',
+      months: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+      peak: 'passion',
+      fig: 'Interest during the UI/UX bootcamp, 2025.02–08',
+      obs: 'Under each new load, interest increased instead of fading.',
+      result: 'Result', resultText: 'Passion found. Specimen committed to design.',
+    },
+
+    p8: {
+      sec: '06 — Discussion', h: 'Strain hardening', foot: 'Discussion',
+      plain: 'Aligned chains carry more load. The more design work I take on, the stronger I get.',
       timeline: [['2025.02–08', 'UI/UX bootcamp, 6 months'], ['2025.11', 'Hired as a web designer, TK C&amp;CO'], ['2026.02', 'Graduated, Polymer Engineering']],
       obs: 'Under new loads, the specimen grew stronger.',
       loadsHead: ['Loads tested', 'Interest'],
@@ -67,8 +91,8 @@ export const COPY = {
       result: 'Result', resultText: 'No loss of interest observed.',
     },
 
-    p7: {
-      sec: '05 — Future work', h: 'Test in progress', foot: 'Future work',
+    p9: {
+      sec: '07 — Future work', h: 'Test in progress', foot: 'Future work',
       plain: 'Here’s what I want to study next — the loads I’m choosing to take on.',
       obs: 'Next loads to apply — what I want to study:',
       list: ['Typography', 'Editorial design', 'Art history', '3D design', 'Sketching'],
@@ -77,12 +101,12 @@ export const COPY = {
       running: 'Test in progress. Fracture not observed.',
     },
 
-    p8: {
-      sec: '06 — Colophon', h: 'Test record', foot: 'Colophon',
+    p10: {
+      sec: '08 — Colophon', h: 'Test record', foot: 'Colophon',
       rows: [
         ['Typefaces', 'IBM Plex Mono, Newsreader'],
         ['Paper', 'Snow 100 g, matte'],
-        ['Format', 'A6, 105 × 148 mm, 8 pp.'],
+        ['Format', 'A6, 105 × 148 mm, 10 pp.'],
         ['Printing', 'Digital'],
         ['Date', '2026.10'],
         ['Place', 'Busan'],
@@ -98,11 +122,12 @@ export const COPY = {
       hint: '← → keys · click or drag the page',
       states: [
         ['Jacket', 'Specimen sleeve', 'Pre-test'],
-        ['p. 01 / 08', 'Cover', 'Ready'],
-        ['p. 02–03 / 08', 'Materials · Elastic region', 'Elastic'],
-        ['p. 04–05 / 08', 'Yield point', 'Yield point'],
-        ['p. 06–07 / 08', 'Strain hardening · Future work', 'Hardening'],
-        ['p. 08 / 08', 'Colophon', 'In progress'],
+        ['p. 01 / 10', 'Cover', 'Ready'],
+        ['p. 02–03 / 10', 'Materials · Elastic region', 'Elastic'],
+        ['p. 04–05 / 10', 'Yield point', 'Yield point'],
+        ['p. 06–07 / 10', 'Cold drawing · Interest, increasing', 'Cold drawing'],
+        ['p. 08–09 / 10', 'Strain hardening · Future work', 'Hardening'],
+        ['p. 10 / 10', 'Colophon', 'In progress'],
       ],
     },
   },

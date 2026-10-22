@@ -1,4 +1,4 @@
-import { buildPages, PW, curveSVG } from './pages.js';
+import { buildPages, PW, TOTAL, curveSVG } from './pages.js';
 import { COPY } from './copy.js';
 import { propsSVG } from './props.js';
 
@@ -8,7 +8,7 @@ const D = 1.6;          // 장 사이 z 간격 (px)
 const TILT = 17;        // 책상 기울기 (deg)
 
 // 재킷(트레싱지) + 4장. [앞면, 뒷면]
-const LEAVES = [['jacket', 'jacketBack'], [1, 2], [3, 4], [5, 6], [7, 8]];
+const LEAVES = [['jacket', 'jacketBack'], [1, 2], [3, 4], [5, 6], [7, 8], [9, 10]];
 const LAST = LEAVES.length;
 
 // 상태별 곡선 강조·측정값 (문구는 copy.js의 ui.states)
@@ -17,6 +17,7 @@ const STATES = [
   { hl: [], strain: 0, stress: 0 },
   { hl: ['elastic'], strain: 0.012, stress: 18.6 },
   { hl: ['yield', 'drawing'], strain: 0.046, stress: 24.1 },
+  { hl: ['drawing', 'harden'], strain: 0.164, stress: 27.9 },
   { hl: ['harden', 'ongoing'], strain: 0.318, stress: 31.8 },
   { hl: ['elastic', 'yield', 'drawing', 'harden', 'ongoing'], strain: 0.402, stress: 34.5 },
 ];
@@ -79,7 +80,7 @@ for (const el of leavesEl.querySelectorAll('.face-inner')) el.innerHTML = PAGES[
 
 // 스크린리더·검색용 텍스트
 const sr = $('srPages');
-for (let p = 1; p <= 8; p++) {
+for (let p = 1; p <= TOTAL; p++) {
   if (p === 5) continue; // 4–5는 한 펼침
   const art = document.createElement('article');
   art.innerHTML = PAGES[p];
@@ -205,7 +206,7 @@ function update() {
   }
 
   $('pageLabel').textContent = single && hasBoth(state)
-    ? `p. ${String(state * 2 - 2 + (side === 'right' ? 1 : 0)).padStart(2, '0')} / 08`
+    ? `p. ${String(state * 2 - 2 + (side === 'right' ? 1 : 0)).padStart(2, '0')} / ${TOTAL}`
     : label;
   $('pageSub').textContent = sub;
   $('rStage').textContent = stage;
